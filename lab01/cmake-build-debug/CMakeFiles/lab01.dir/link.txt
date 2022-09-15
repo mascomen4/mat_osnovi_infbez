@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblab01.a CMakeFiles/lab01.dir/src/CipherHelper.cpp.o
+/usr/bin/ranlib liblab01.a

@@ -1,0 +1,4 @@
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles/main.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles/lab02.dir

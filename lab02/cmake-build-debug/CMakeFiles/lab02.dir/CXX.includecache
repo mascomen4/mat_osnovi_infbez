@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/include/CipherHelper.h
+string
+-
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/include/CipherHelper2.h
+../../lab01/include/CipherHelper.h
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/include/CipherHelper.h
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/src/CipherHelper2.cpp
+algorithm
+-
+iostream
+-
+map
+-
+../include/CipherHelper2.h
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/include/CipherHelper2.h
+

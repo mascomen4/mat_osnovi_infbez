@@ -19,7 +19,7 @@ public:
 class CipherAtbash : CipherHelper {
 public:
     static void cipher (const std::string& message, std::string& encrypted);
-//    static void decipher (const std::string& message, int Key, std::string& decrypted);
+    static void decipher (const std::string& message, std::string& decrypted);
 };
 
 

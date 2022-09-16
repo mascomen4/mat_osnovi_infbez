@@ -1,8 +1,6 @@
 #include "../include/CipherHelper.h"
-
 #include <iostream>
 
-//const std::string CipherHelper::engAlphabetLower = "abcdefghijklmnopqrstuvwxyz";
 const std::string CipherHelper::engAlphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
 
 void CipherCaesar::cipher(const std::string& message, int Key, std::string& encrypted){
@@ -39,6 +37,7 @@ void CipherCaesar::decipher(const std::string &message, int Key, std::string &de
     }
 }
 
+
 void CipherAtbash::cipher(const std::string &message, std::string &encrypted) {
     if (!encrypted.empty()){
         throw std::invalid_argument( "encrypted is not empty!" );
@@ -54,6 +53,10 @@ void CipherAtbash::cipher(const std::string &message, std::string &encrypted) {
     else{
         encrypted = "";
     }
+}
+
+void CipherAtbash::decipher(const std::string &message, std::string &decrypted) {
+    cipher(message, decrypted);
 }
 
 //void CipherAtbash::decipher(const std::string &message, int Key, std::string &decrypted) {

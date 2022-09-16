@@ -1,14 +1,7 @@
-//
-// Created by pi on 15.09.2022.
-//
-
 #include <iostream>
 #include "../include/CipherHelper.h"
 
 int main(){
-
-    // Caesar part
-
     std::string msg1 = "HELLO WORLD";
     std::string msg2 = "I LIKE CATS";
     std::string msg3 = "INFBEZ KAIF";
@@ -44,16 +37,12 @@ int main(){
     std::cout << enc2 << std::endl;
     std::cout << enc3 << std::endl << std::endl;
 
-    CipherAtbash::cipher(enc1, dec1);
-    CipherAtbash::cipher(enc2, dec2);
-    CipherAtbash::cipher(enc3, dec3);
+    CipherAtbash::decipher(enc1, dec1);
+    CipherAtbash::decipher(enc2, dec2);
+    CipherAtbash::decipher(enc3, dec3);
 
     std::cout << dec1 << std::endl;
     std::cout << dec2 << std::endl;
     std::cout << dec3 << std::endl << std::endl;
-
-
-
-
 }
 

@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/main.dir/src/main.cpp.o -o main  liblab03Lib.a 

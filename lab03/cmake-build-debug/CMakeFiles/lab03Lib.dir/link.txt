@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblab03Lib.a CMakeFiles/lab03Lib.dir/src/CipherFiniteGammaHelper.cpp.o
+/usr/bin/ranlib liblab03Lib.a

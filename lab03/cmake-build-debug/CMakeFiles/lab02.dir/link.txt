@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblab02.a CMakeFiles/lab02.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/src/CipherHelper2.cpp.o
+/usr/bin/ranlib liblab02.a

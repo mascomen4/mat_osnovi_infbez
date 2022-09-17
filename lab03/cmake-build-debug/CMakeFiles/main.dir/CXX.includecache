@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab03/include/CipherFiniteGammaHelper.h
+string
+-
+vector
+-
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab03/src/main.cpp
+iostream
+-
+../include/CipherFiniteGammaHelper.h
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab03/include/CipherFiniteGammaHelper.h
+

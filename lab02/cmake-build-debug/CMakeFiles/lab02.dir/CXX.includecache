@@ -13,6 +13,12 @@ string
 /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/include/CipherHelper2.h
 ../../lab01/include/CipherHelper.h
 /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/include/CipherHelper.h
+vector
+-
+eigen3/Eigen/Core
+-
+map
+-
 
 /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/src/CipherHelper2.cpp
 algorithm
@@ -20,6 +26,10 @@ algorithm
 iostream
 -
 map
+-
+complex
+-
+random
 -
 ../include/CipherHelper2.h
 /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/include/CipherHelper2.h

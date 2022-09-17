@@ -127,7 +127,7 @@ CipherLattice::indexes_pwdAligned CipherLattice::cipher(const std::string &msg, 
     // fill the table
     for (int i = 0; i <= 4; i++){
         table.push_back(rotatedBlock);
-        rotatedBlock = rotate(rotatedBlock);
+        rotate(rotatedBlock);
     }
     // by now rotatedBlock is the initial block (rotated by 360 degrees)
 
@@ -140,6 +140,7 @@ CipherLattice::indexes_pwdAligned CipherLattice::cipher(const std::string &msg, 
     for (int el = 0; el < k_squared; el++){
         uint chosen_part = distr(gen);
         // search for the element in the block
+        // Probably the function find_element is not working correctly. Test and debug the function.
         std::pair<int, int> rowCol = find_element(table[chosen_part], el+1);
         // convert found index to the global index.
         if (chosen_part == 1){
@@ -160,20 +161,29 @@ CipherLattice::indexes_pwdAligned CipherLattice::cipher(const std::string &msg, 
     }
 
     Eigen::Matrix<char, Eigen::Dynamic, Eigen::Dynamic> filledTable = Eigen::Matrix<char, Eigen::Dynamic, Eigen::Dynamic>::Zero(k*2, k*2);
-    Eigen::MatrixXi mToRotate = rotate(eigenTable);
+    Eigen::MatrixXi mToRotate = eigenTable;
+    rotate(mToRotate);
+
+
     // rotate matrix of indexes until the filledTable is all filled (4 times)
+
     // fill table the first time
     for (int i = 0; i < k_squared; i++){
         filledTable(indexes[i].first, indexes[i].second) = msg[i];
     }
+    std::cout << "initial fill: " << std::endl << filledTable << std::endl;
 
-    for (int i = 1; i <= 4; i++) {
+    // rotate and fill the rest of the times
+    for (int i = 1; i < 4; i++) {
+        std::cout << "mToRotate on iteration: " << i << std::endl << mToRotate << std::endl;
         for (int el = 0; el < k_squared; el++) {
             auto elIndexes = find_element(mToRotate, el + 1);
             filledTable(elIndexes.first, elIndexes.second) = msg[i * k_squared + el];
         }
-        mToRotate = rotate(mToRotate);
+        rotate(mToRotate);
     } // now the matrix is considered to be filled
+
+    std::cout << "after rotations: " << std::endl << filledTable << std::endl;
 
     // permute the columns according to the alphabetical order of the pwd
     std::string pwdSorted = pwdAligned;
@@ -182,16 +192,17 @@ CipherLattice::indexes_pwdAligned CipherLattice::cipher(const std::string &msg, 
     create_mapping(pwdSorted, pwd, pwdSorted2pwd);
     auto permTable = filledTable;
 
+    std::cout << "perm table: " << std::endl << permTable << std::endl;
+
     // take the pwdSorted index, find it's corresponding index in the pwd and substitude
     // the column with that index to the index of pwdSorted
     // TODO: Create the function for permutations
     for (int i = 0; i < pwdSorted.size(); i++){
-        permTable.block(0, i, filledTable.rows(), 1) =
-                filledTable.block(0, pwdSorted2pwd[i], filledTable.rows(), 1);
-        permTable.block(0, pwdSorted2pwd[i], filledTable.rows(), 1) =
-                filledTable.block(0, i, filledTable.rows(), 1);
+        permTable.col(i) = filledTable.row(pwdSorted2pwd[i]);
+        permTable.col(pwdSorted2pwd[i]) = filledTable.row(i);
     }
 
+    std::cout << "permuted table: " << std::endl << permTable << std::endl;
     // now, when the columns are permuted we can write to the cipher message
     for (int col = 0; col < permTable.cols(); col++){
         for (int row = 0; row < permTable.rows(); row++){
@@ -205,5 +216,95 @@ CipherLattice::indexes_pwdAligned CipherLattice::cipher(const std::string &msg, 
 
 void CipherLattice::decipher(const std::string &msg, const CipherLattice::indexes_pwdAligned& i_pwd,
                              std::string &decrypted) {
+    // TODO: to be implemented
+}
 
+const std::vector<std::string> CipherVigenereTable::cipherRusTable = {
+        "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ",
+        "БВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯА",
+        "ВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБ",
+        "ГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВ",
+        "ДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГ",
+        "ЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГД",
+        "ЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕ",
+        "ЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁ",
+        "ЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖ",
+        "ИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗ",
+        "ЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИ",
+        "КЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙ",
+        "ЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙК",
+        "МНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛ",
+        "НОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМ",
+        "ОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМН",
+        "ПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНО",
+        "РСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОП",
+        "СТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПР",
+        "ТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРС",
+        "УФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТ",
+        "ФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУ",
+        "ХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФ",
+        "ЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХ",
+        "ЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦ",
+        "ШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧ",
+        "ЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШ",
+        "ЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩ",
+        "ЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪ",
+        "ЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫ",
+        "ЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬ",
+        "ЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭ",
+        "ЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮ"
+};
+
+const std::vector<std::string> CipherVigenereTable::cipherEngTable = {
+        "abcdefghijklmnopqrstuvwxyz",
+        "bcdefghijklmnopqrstuvwxyza",
+        "cdefghijklmnopqrstuvwxyzab",
+        "defghijklmnopqrstuvwxyzabc",
+        "efghijklmnopqrstuvwxyzabcd",
+        "fghijklmnopqrstuvwxyzabcde",
+        "ghijklmnopqrstuvwxyzabcdef",
+        "hijklmnopqrstuvwxyzabcdefg",
+        "ijklmnopqrstuvwxyzabcdefgh",
+        "jklmnopqrstuvwxyzabcdefghi",
+        "klmnopqrstuvwxyzabcdefghij",
+        "lmnopqrstuvwxyzabcdefghijk",
+        "mnopqrstuvwxyzabcdefghijkl",
+        "nopqrstuvwxyzabcdefghijklm",
+        "opqrstuvwxyzabcdefghijklmn",
+        "pqrstuvwxyzabcdefghijklmno",
+        "qrstuvwxyzabcdefghijklmnop",
+        "rstuvwxyzabcdefghijklmnopq",
+        "stuvwxyzabcdefghijklmnopqr",
+        "tuvwxyzabcdefghijklmnopqrs",
+        "uvwxyzabcdefghijklmnopqrst",
+        "vwxyzabcdefghijklmnopqrstu",
+        "wxyzabcdefghijklmnopqrstuv",
+        "xyzabcdefghijklmnopqrstuvw",
+        "yzabcdefghijklmnopqrstuvwx",
+        "zabcdefghijklmnopqrstuvwxy"
+};
+
+// considering there's only capital letters
+// TODO: It seems that in order to support the russian letters it's better to use wstring, or the array of the russian
+//  chars => it's better to create a template which accepts different types of input variables
+void CipherVigenereTable::cipher(const std::string &msg, const std::string &pwd, std::string& encrypted) {
+    std::string pwdAligned;
+    for (int i = 0; i < msg.size(); i++){
+        auto ind = i % pwd.size();
+        pwdAligned += pwd[ind];
+    }
+
+    for (int i = 0; i < msg.length(); i++){
+        if (msg[i] != ' '){
+//            auto msg_size = msg.size() / sizeof(msg[0]);
+            auto rowIndex = CipherHelper::engAlphabetLower.find(pwdAligned[i]);
+            auto colIndex = CipherHelper::engAlphabetLower.find(msg[i]);
+            encrypted += cipherEngTable[rowIndex][colIndex];
+        }
+
+    }
+}
+
+void CipherVigenereTable::decipher(const std::string &msg, const std::string &pwd, std::string& decrypted) {
+    // TODO: to be implemented
 }

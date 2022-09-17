@@ -63,8 +63,9 @@ CMAKE_BINARY_DIR = /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cm
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/main.dir/all
+all: CMakeFiles/lab01.dir/all
 all: CMakeFiles/lab02.dir/all
+all: CMakeFiles/main.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,35 +73,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/main.dir/clean
+clean: CMakeFiles/lab01.dir/clean
 clean: CMakeFiles/lab02.dir/clean
+clean: CMakeFiles/main.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/main.dir
+# Target rules for target CMakeFiles/lab01.dir
 
 # All Build rule for target.
-CMakeFiles/main.dir/all: CMakeFiles/lab02.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target main"
-.PHONY : CMakeFiles/main.dir/all
+CMakeFiles/lab01.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target lab01"
+.PHONY : CMakeFiles/lab01.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
+CMakeFiles/lab01.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lab01.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/main.dir/rule
+.PHONY : CMakeFiles/lab01.dir/rule
 
 # Convenience name for target.
-main: CMakeFiles/main.dir/rule
-.PHONY : main
+lab01: CMakeFiles/lab01.dir/rule
+.PHONY : lab01
 
 # clean rule for target.
-CMakeFiles/main.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
-.PHONY : CMakeFiles/main.dir/clean
+CMakeFiles/lab01.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/clean
+.PHONY : CMakeFiles/lab01.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/lab02.dir
@@ -109,7 +111,7 @@ CMakeFiles/main.dir/clean:
 CMakeFiles/lab02.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target lab02"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target lab02"
 .PHONY : CMakeFiles/lab02.dir/all
 
 # Build rule for subdir invocation for target.
@@ -127,6 +129,33 @@ lab02: CMakeFiles/lab02.dir/rule
 CMakeFiles/lab02.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/clean
 .PHONY : CMakeFiles/lab02.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/main.dir
+
+# All Build rule for target.
+CMakeFiles/main.dir/all: CMakeFiles/lab01.dir/all
+CMakeFiles/main.dir/all: CMakeFiles/lab02.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target main"
+.PHONY : CMakeFiles/main.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/main.dir/rule
+
+# Convenience name for target.
+main: CMakeFiles/main.dir/rule
+.PHONY : main
+
+# clean rule for target.
+CMakeFiles/main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
+.PHONY : CMakeFiles/main.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

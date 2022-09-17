@@ -65,16 +65,6 @@ CMAKE_BINARY_DIR = /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab02/cm
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/pi/work_drivecast/thirdparty/clion-2021.2.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -84,6 +74,16 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/pi/work_drivecast/thirdparty/clion-2021.2.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named lab01
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+lab01: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab01
+.PHONY : lab01
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+lab01/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/build
+.PHONY : lab01/fast
 
 #=============================================================================
 # Target rules for targets named lab02
@@ -141,6 +141,43 @@ lab02: cmake_check_build_system
 lab02/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/build
 .PHONY : lab02/fast
+
+#=============================================================================
+# Target rules for targets named main
+
+# Build rule for target.
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
+.PHONY : main
+
+# fast build rule for target.
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
+
+home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.o: home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.o
+.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.o
+
+# target to build an object file
+home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.o
+.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.o
+
+home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.i: home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.i
+.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.i
+
+# target to preprocess a source file
+home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.i
+.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.i
+
+home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.s: home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.s
+.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.s
+
+# target to generate assembly for a file
+home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.s
+.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.cpp.s
 
 src/CipherHelper2.o: src/CipherHelper2.cpp.o
 .PHONY : src/CipherHelper2.o
@@ -198,8 +235,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... lab01"
 	@echo "... lab02"
 	@echo "... main"
+	@echo "... home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.o"
+	@echo "... home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.i"
+	@echo "... home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab01/src/CipherHelper.s"
 	@echo "... src/CipherHelper2.o"
 	@echo "... src/CipherHelper2.i"
 	@echo "... src/CipherHelper2.s"

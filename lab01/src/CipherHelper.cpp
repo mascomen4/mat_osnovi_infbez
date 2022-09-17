@@ -2,6 +2,7 @@
 #include <iostream>
 
 const std::string CipherHelper::engAlphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+const std::string CipherHelper::engAlphabetLower = "abcdefghijklmnopqrstuvwxyz";
 
 void CipherCaesar::cipher(const std::string& message, int Key, std::string& encrypted){
     // char with index j => char with index (j + k) / mod 26

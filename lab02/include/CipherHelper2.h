@@ -10,10 +10,10 @@
 #include <eigen3/Eigen/Core>
 #include <map>
 
-class CipherHelper2 : CipherHelper {
+class CipherHelper2 : public CipherHelper {
+public:
     static const std::string rusAlphabetLower;
     static const std::string rusAlphabetUpper;
-    static const std::string engAlphabetUpper;
 };
 
 class CipherPath : CipherHelper2 {
@@ -37,15 +37,18 @@ public:
 
 private:
     // rotates clockwise by 90 degrees => reversed columns are now rows.
-    static Eigen::MatrixXi rotate(Eigen::MatrixXi& input){
-        Eigen::MatrixXi res;
-        std::cout << "Before reverse: " << input << std::endl;
-        input.colwise().reverse();
-        std::cout << "After reverse: " << input << std::endl;
+    static void rotate(Eigen::MatrixXi& input){
+        Eigen::MatrixXi res = input;
+//        std::cout << "Before reverse: " << std::endl << input << std::endl;
+        input = input.colwise().reverse();
+//        std::cout << "After reverse: "<<  std::endl << input << std::endl;
+//        std::cout << "res: " << std::endl << res << std::endl;
+//        std::cout << "output: " << std::endl << input << std::endl;
         for (int i = 0; i < input.rows(); i++){
-            auto col = input.block(0, i, input.rows(), 1);
-            res.block(i, 0, 1, input.cols()) = col;
+            res.row(i) = input.col(i);
         }
+        input = res;
+//        std::cout << "resulting matrix: " << std::endl << res << std::endl;
     }
 
     // bear in mind that the numbering in matrix is from 1. The function assumes that you've taken that into account
@@ -70,6 +73,9 @@ private:
 
 class CipherVigenereTable : CipherHelper2 {
 public:
+    const static std::vector<std::string> cipherRusTable, cipherEngTable;
+    static void cipher(const std::string& msg, const std::string& pwd, std::string& encrypted);
+    static void decipher(const std::string& msg, const std::string& pwd, std::string& decrypted);
 
 };
 

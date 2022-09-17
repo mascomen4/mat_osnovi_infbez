@@ -40,7 +40,10 @@ private:
     static void rotate(Eigen::MatrixXi& input){
         Eigen::MatrixXi res = input;
 //        std::cout << "Before reverse: " << std::endl << input << std::endl;
-        input = input.colwise().reverse();
+//        std::cout << "input before reverse: " << std::endl << input << std::endl;
+        // read about Eigens' aliasing: https://eigen.tuxfamily.org/dox/group__TopicAliasing.html and why to use .eval()
+        input = input.colwise().reverse().eval();
+//        std::cout << "input after reverse: " << std::endl << input << std::endl;
 //        std::cout << "After reverse: "<<  std::endl << input << std::endl;
 //        std::cout << "res: " << std::endl << res << std::endl;
 //        std::cout << "output: " << std::endl << input << std::endl;

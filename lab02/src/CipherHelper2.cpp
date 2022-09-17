@@ -123,25 +123,50 @@ CipherLattice::indexes_pwdAligned CipherLattice::cipher(const std::string &msg, 
     }
 
     std::vector<Eigen::MatrixXi> table;
+    Eigen::MatrixXi eigenTableInitial(k*2, k*2);
     auto rotatedBlock = block;
     // fill the table
     for (int i = 0; i <= 4; i++){
+//        std::cout << "push to table the block: " << std::endl << rotatedBlock << std::endl;
         table.push_back(rotatedBlock);
         rotate(rotatedBlock);
     }
+    eigenTableInitial.block(0, 0, k, k)  = table[0];
+    eigenTableInitial.block(0, k, k, k) = table[1];
+    eigenTableInitial.block(k, 0, k, k) = table[3];
+    eigenTableInitial.block(k, k, k, k) = table[2];
+//    std::cout << "The constructed table is: " << std::endl << eigenTableInitial << std::endl;
     // by now rotatedBlock is the initial block (rotated by 360 degrees)
 
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distr(0, 3);
     std::vector< std::pair<int, int> > indexes;
+
+    // this is a low-skilled fix to the problem of random initialization. of course you can come up with something better
+    // for example, exit if after k^2 + 1 iterations the table is not filled.
+    std::array<int, 4> chosen_parts = {1, 0, 0, 0};
     // compose a matrix of indexes
     Eigen::MatrixXi eigenTable = Eigen::MatrixXi::Zero(k*2, k*2);
     for (int el = 0; el < k_squared; el++){
-        uint chosen_part = distr(gen);
+        // use predefined table instead of random generation.
+        uint chosen_part = chosen_parts[el];
+//        uint chosen_part = distr(gen);
         // search for the element in the block
         // Probably the function find_element is not working correctly. Test and debug the function.
-        std::pair<int, int> rowCol = find_element(table[chosen_part], el+1);
+//        std::cout << "chosen table: " << std::endl << table[chosen_part] << std::endl;
+        std::pair<int, int> rowCol;
+        if (chosen_part == 2){
+            rowCol = find_element(table[chosen_part+1], el+1);
+        }
+        if (chosen_part == 3){
+            rowCol = find_element(table[chosen_part-1], el+1);
+        }
+        else{
+            rowCol = find_element(table[chosen_part], el+1);
+        }
+
+//        std::cout << "found element is: " << rowCol.first << " " << rowCol.second << std::endl;
         // convert found index to the global index.
         if (chosen_part == 1){
             // if it's the second part, the row remains the same, but the column is skewed
@@ -150,11 +175,11 @@ CipherLattice::indexes_pwdAligned CipherLattice::cipher(const std::string &msg, 
         else if (chosen_part == 2){
             // if it's the third part, the column remains the same, but the row goes down
             rowCol.first += k;
+            rowCol.second += k;
         }
         else if (chosen_part == 3){
             // finally, if it's the fourth part, the column and the row are skewed
             rowCol.first += k;
-            rowCol.second += k;
         }
         eigenTable(rowCol.first, rowCol.second) = el + 1;
         indexes.push_back(rowCol);
@@ -171,38 +196,61 @@ CipherLattice::indexes_pwdAligned CipherLattice::cipher(const std::string &msg, 
     for (int i = 0; i < k_squared; i++){
         filledTable(indexes[i].first, indexes[i].second) = msg[i];
     }
-    std::cout << "initial fill: " << std::endl << filledTable << std::endl;
+//    std::cout << "initial fill: " << std::endl << filledTable << std::endl;
 
     // rotate and fill the rest of the times
-    for (int i = 1; i < 4; i++) {
-        std::cout << "mToRotate on iteration: " << i << std::endl << mToRotate << std::endl;
+//    for (int i = 1; i < 4; i++) {
+    int filled_table_iterator = 1;
+    // while the table is not filled.
+
+//    std::cout << "filledTable is: " << std::endl << filledTable << std::endl;
+//    std::cout << "The result of filledTable: " << (filledTable.array() == 0) << std::endl;
+
+    while ( (filledTable.array() == 0).any() ){
+//        std::cout << "mToRotate on iteration: " << filled_table_iterator << std::endl << mToRotate << std::endl;
+//        std::cout << "filledTable on iteration: " << filled_table_iterator << std::endl << filledTable << std::endl;
         for (int el = 0; el < k_squared; el++) {
             auto elIndexes = find_element(mToRotate, el + 1);
-            filledTable(elIndexes.first, elIndexes.second) = msg[i * k_squared + el];
+            if (filledTable(elIndexes.first, elIndexes.second) == 0){
+                filledTable(elIndexes.first, elIndexes.second) = msg[filled_table_iterator * k_squared + el];
+            }
         }
         rotate(mToRotate);
+        filled_table_iterator += 1;
     } // now the matrix is considered to be filled
 
-    std::cout << "after rotations: " << std::endl << filledTable << std::endl;
+//    std::cout << "after rotations: " << std::endl << filledTable << std::endl;
 
     // permute the columns according to the alphabetical order of the pwd
     std::string pwdSorted = pwdAligned;
     std::sort(pwdSorted.begin(), pwdSorted.end());
     std::map<uint, uint> pwdSorted2pwd;
-    create_mapping(pwdSorted, pwd, pwdSorted2pwd);
+    create_mapping(pwdSorted, pwdAligned, pwdSorted2pwd);
     auto permTable = filledTable;
 
-    std::cout << "perm table: " << std::endl << permTable << std::endl;
+//    std::cout << "pwdAligned: " << pwdAligned << std::endl;
+//    std::cout << "pwdSorted: " << pwdSorted << std::endl;
+//    std::cout << "pwdSorted2pwd: ";
+//    for (int i = 0; i < pwdSorted.size(); i++){
+//        std::cout << i << ", " << pwdSorted2pwd[i] << "  ";
+//    }
+//    std::cout << std::endl << std::endl;
+
+//    std::cout << "perm table: " << std::endl << permTable << std::endl;
+//    std::cout << "filled table: " << std::endl << filledTable << std::endl;
+
 
     // take the pwdSorted index, find it's corresponding index in the pwd and substitude
     // the column with that index to the index of pwdSorted
     // TODO: Create the function for permutations
     for (int i = 0; i < pwdSorted.size(); i++){
-        permTable.col(i) = filledTable.row(pwdSorted2pwd[i]);
-        permTable.col(pwdSorted2pwd[i]) = filledTable.row(i);
+//        std::cout << "column from filledTable: " << std::endl << filledTable.col(pwdSorted2pwd[i]).eval() << std::endl;
+        permTable.col(i) = filledTable.col(pwdSorted2pwd[i]).eval();
+//        permTable.col(pwdSorted2pwd[i]) = filledTable.col(i).eval();
+//        std::cout << "filledTable: " << std::endl << permTable << std::endl;
     }
 
-    std::cout << "permuted table: " << std::endl << permTable << std::endl;
+//    std::cout << "permuted table: " << std::endl << permTable << std::endl;
     // now, when the columns are permuted we can write to the cipher message
     for (int col = 0; col < permTable.cols(); col++){
         for (int row = 0; row < permTable.rows(); row++){

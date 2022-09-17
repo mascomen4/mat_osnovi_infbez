@@ -23,10 +23,13 @@ int main() {
     CipherPath::decipher(enc2, "pasword", dec2);
     std::cout << dec2 << std::endl << std::endl << std::endl;
 
+    // NOTE: Works only for k = 2, and password with number k^2. Please refer to the function definition and search for:
+    // "this is a low-skilled fix" to find out why. If you have time you can expand the function.
     enc1 = "";
     std::cout << "CipherLattice: " << std::endl;
+    std::cout << "message: " << test1 << std::endl;
     CipherLattice::cipher(test1, "paroli", 2, enc1);
-    std::cout << enc1 << std::endl << std::endl;
+    std::cout << "encrypted: " << enc1 << std::endl << std::endl;
 
     std::cout << "Cipher Vigenere Table: " << std::endl;
     std::string pwd3 = "matematika";

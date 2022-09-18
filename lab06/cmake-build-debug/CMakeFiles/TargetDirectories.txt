@@ -1,0 +1,5 @@
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab06/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab06/cmake-build-debug/CMakeFiles/gcdLib.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab06/cmake-build-debug/CMakeFiles/lab06.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab06/cmake-build-debug/CMakeFiles/main.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab06/cmake-build-debug/CMakeFiles/edit_cache.dir

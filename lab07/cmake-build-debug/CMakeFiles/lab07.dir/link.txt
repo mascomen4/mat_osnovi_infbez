@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblab07.a CMakeFiles/lab07.dir/src/DicreteLogarithmHelper.cpp.o
+/usr/bin/ranlib liblab07.a

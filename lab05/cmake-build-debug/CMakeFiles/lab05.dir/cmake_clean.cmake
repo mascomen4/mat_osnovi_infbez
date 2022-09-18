@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/lab05.dir/main.cpp.o"
   "CMakeFiles/lab05.dir/src/PrimeNumbersHelper.cpp.o"
-  "lab05"
-  "lab05.pdb"
+  "liblab05.a"
+  "liblab05.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libprimeNumsLib.a CMakeFiles/primeNumsLib.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.o
+/usr/bin/ranlib libprimeNumsLib.a

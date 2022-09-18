@@ -13,7 +13,7 @@ public:
     template <typename T>
     // true - probably prime number
     // false - composite number
-    static bool FermatTest(const T&& n){
+    static bool FermatTest(const T& n){
         if (!check_number(n, 5)){
             throw std::invalid_argument( "number must be >= 5 and odd number" );
         }
@@ -30,7 +30,7 @@ public:
     template<typename T>
     // true - probably prime number
     // false - composite number
-    static bool SolovayStrassenTest(const T&& n){
+    static bool SolovayStrassenTest(const T& n){
         if (!check_number(n, 5)){
             throw std::invalid_argument( "number must be >= 5 and odd number" );
         }
@@ -51,7 +51,7 @@ public:
     template<typename T>
     // true - probably prime number
     // false - composite number
-    static bool millerRabinTest(const T&& n){
+    static bool millerRabinTest(const T& n){
         if (!check_number(n, 5)){
             throw std::invalid_argument( "number must be >= 5 and odd number" );
         }
@@ -75,9 +75,8 @@ public:
         return true;
     }
 
-private:
     template <typename T>
-    static decltype(auto) randN(const T&& low, const T&& high){
+    static decltype(auto) randN(const T& low, const T& high){
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<> distr(low, high);
@@ -85,32 +84,34 @@ private:
     }
 
     template<typename T>
-    static decltype(auto) symbolJacobi(const T&& n, const T&& a){
+    static decltype(auto) symbolJacobi(const T& n, const T& a){
         if (n < 3){
             throw std::invalid_argument( "number must be >= 3" );
         }
         T g = 1;
         T res, s;
+        T nCopy = n;
+        T aCopy = a;
 
         while(true){
-            if (a == 0){
+            if (aCopy == 0){
                 res = 0;
                 return res;
             }
-            else if (a == 1){
+            else if (aCopy == 1){
                 res = g;
                 return res;
             }
-            T k = dividersCount(a, 2);
-            T a1 = a / (T)pow(2, k);
+            T k = dividersCount(aCopy, 2);
+            T a1 = aCopy / (T)pow(2, k);
             if (k % 2 == 0){
                 s = 1;
             }
             else{
-                if (n % 8 == 1 | n % 8 == -1){
+                if (nCopy % 8 == 1 | nCopy % 8 == -1){
                     s = 1;
                 }
-                else if (n % 8 == 3 | n % 8 == -3){
+                else if (nCopy % 8 == 3 | nCopy % 8 == -3){
                     s = -1;
                 }
             }
@@ -118,27 +119,29 @@ private:
                 res = g * s;
                 return res;
             }
-            if (n % 4 == 3 && a1 % 4 == 3){
+            if (nCopy % 4 == 3 && a1 % 4 == 3){
                 s = -s;
             }
-            a = n % a1;
-            n = a1;
+            aCopy = nCopy % a1;
+            nCopy = a1;
             g = g * s;
         }
 
     }
 
     template<typename T>
-    static decltype(auto) dividersCount(const T&& n, const T&& divider){
+    static decltype(auto) dividersCount(const T& n, const T& divider){
         int i = 0;
-        while (n % divider == 0){
+        T nCopy = n;
+        while (nCopy % divider == 0){
             i += 1;
-            n /= divider;
+            nCopy /= divider;
         }
+        return i;
     }
 
     template<typename T>
-    static bool check_number(const T&& n, const T& threshold){
+    static bool check_number(const T& n, const T& threshold){
         if (n < threshold){
             return false;
         }

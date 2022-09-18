@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/inlcude/PrimeNumbersHelper.h
+random
+-
+stdexcept
+-
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/main.cpp
+iostream
+-
+inlcude/PrimeNumbersHelper.h
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/inlcude/PrimeNumbersHelper.h
+

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/include/GCDHelder.h
+stdexcept
+-
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/main.cpp
+iostream
+-
+include/GCDHelder.h
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/include/GCDHelder.h
+

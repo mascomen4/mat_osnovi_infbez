@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblab06.a CMakeFiles/lab06.dir/src/NumberDecompositionHelper.cpp.o
+/usr/bin/ranlib liblab06.a

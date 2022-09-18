@@ -1,1 +1,2 @@
-/usr/bin/c++ -g CMakeFiles/lab05.dir/main.cpp.o CMakeFiles/lab05.dir/src/PrimeNumbersHelper.cpp.o -o lab05 
+/usr/bin/ar qc liblab05.a CMakeFiles/lab05.dir/src/PrimeNumbersHelper.cpp.o
+/usr/bin/ranlib liblab05.a

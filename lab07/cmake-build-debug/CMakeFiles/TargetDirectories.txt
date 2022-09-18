@@ -1,0 +1,5 @@
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles/lab07.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles/main.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles/primeNumsLib.dir
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles/edit_cache.dir

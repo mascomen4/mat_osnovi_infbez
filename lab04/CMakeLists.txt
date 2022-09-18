@@ -3,4 +3,7 @@ project(lab04)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(lab04 main.cpp src/GCDHelder.cpp include/GCDHelder.h)
+add_library(lab04 src/GCDHelder.cpp include/GCDHelder.h)
+
+add_executable(main main.cpp)
+target_link_libraries(main lab04)

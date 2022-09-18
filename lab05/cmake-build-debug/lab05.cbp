@@ -37,11 +37,55 @@
 					<DistClean command="/usr/bin/make -j12 -f &quot;/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="lab05">
-				<Option output="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/lab05" prefix_auto="0" extension_auto="0"/>
+			<Target title="main">
+				<Option output="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main/fast">
+				<Option output="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab05">
+				<Option output="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/liblab05.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/c++/9"/>
@@ -60,10 +104,10 @@
 				</MakeCommands>
 			</Target>
 			<Target title="lab05/fast">
-				<Option output="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/lab05" prefix_auto="0" extension_auto="0"/>
+				<Option output="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug/liblab05.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/cmake-build-debug"/>
 				<Option object_output="./"/>
-				<Option type="1"/>
+				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/c++/9"/>
@@ -82,13 +126,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/main.cpp">
+		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/inlcude/PrimeNumbersHelper.h">
 			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/main.cpp">
+			<Option target="main"/>
 		</Unit>
 		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp">
-			<Option target="lab05"/>
-		</Unit>
-		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.h">
 			<Option target="lab05"/>
 		</Unit>
 		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/CMakeLists.txt">

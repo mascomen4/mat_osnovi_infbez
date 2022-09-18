@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgcdLib.a CMakeFiles/gcdLib.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.o
+/usr/bin/ranlib libgcdLib.a

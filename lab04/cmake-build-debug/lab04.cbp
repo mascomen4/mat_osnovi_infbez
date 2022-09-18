@@ -82,13 +82,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/include/GCDHelder.h">
+			<Option target="lab04"/>
+		</Unit>
 		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/main.cpp">
 			<Option target="lab04"/>
 		</Unit>
 		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp">
-			<Option target="lab04"/>
-		</Unit>
-		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.h">
 			<Option target="lab04"/>
 		</Unit>
 		<Unit filename="/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/CMakeLists.txt">

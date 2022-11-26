@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../lab04/include/GCDHelder.h
+stdexcept
+-
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab06/main.cpp
+iostream
+-
+src/NumberDecompositionHelper.h
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab06/src/NumberDecompositionHelper.h
+GCDHelder.h
+-
+
+/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab06/src/NumberDecompositionHelper.h
+functional
+-
+iostream
+-
+GCDHelder.h
+-
+

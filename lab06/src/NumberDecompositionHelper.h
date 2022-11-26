@@ -6,22 +6,24 @@
 #define LAB06_NUMBERDECOMPOSITIONHELPER_H
 
 #include <functional>
+#include <iostream>
 #include <GCDHelder.h>
 
 class NumberDecompositionHelper {
+public:
     // cFunc - compressFunc
     // return -1 indicates the divider is not found
-    static int pPollardMethod(const int& n, const int& c, std::function<int (int, int)>& cFunc){
-        int res, a, b, d;
-        a = c, b = c;
-        while (true){
-            a = cFunc(a, n);
-            b = cFunc(b, n);
-            GCDHelder::eucBinary(a - b, n, d);
+    static int pPollardMethod(const int& n, const int& c){
+        int a = c, b = c, d = 1;
+        while (d==1){
+            a = compressFunc(a, n);
+            b = compressFunc(compressFunc(b, n), n);
+//            std::cout << a << " " << b << std::endl;
+            GCDHelder::eucBinary(abs(a - b), n, d);
             if (d > 1 && d < n){
                 return d;
             }
-            else if (d == n){
+            if (d == n){
                 return -1;
             }
         }
@@ -29,8 +31,7 @@ class NumberDecompositionHelper {
 
     }
 
-private:
-    static int compressFunc(int x, int modulo){
+    static int compressFunc(const int& x, const int& modulo){
         return (x*x + 5) % modulo;
     }
 };

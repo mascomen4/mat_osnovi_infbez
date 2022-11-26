@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named gcdLib
+# Target rules for targets named main
 
 # Build rule for target.
-gcdLib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gcdLib
-.PHONY : gcdLib
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-gcdLib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gcdLib.dir/build.make CMakeFiles/gcdLib.dir/build
-.PHONY : gcdLib/fast
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 #=============================================================================
 # Target rules for targets named lab06
@@ -141,43 +141,6 @@ lab06: cmake_check_build_system
 lab06/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab06.dir/build.make CMakeFiles/lab06.dir/build
 .PHONY : lab06/fast
-
-#=============================================================================
-# Target rules for targets named main
-
-# Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
-
-# fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
-
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.o: home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.o
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.o
-
-# target to build an object file
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gcdLib.dir/build.make CMakeFiles/gcdLib.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.o
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.o
-
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.i: home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.i
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.i
-
-# target to preprocess a source file
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gcdLib.dir/build.make CMakeFiles/gcdLib.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.i
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.i
-
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.s: home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.s
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.s
-
-# target to generate assembly for a file
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gcdLib.dir/build.make CMakeFiles/gcdLib.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.s
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -235,12 +198,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... gcdLib"
 	@echo "... lab06"
 	@echo "... main"
-	@echo "... home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.o"
-	@echo "... home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.i"
-	@echo "... home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab04/src/GCDHelder.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

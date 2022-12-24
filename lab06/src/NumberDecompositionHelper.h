@@ -18,7 +18,6 @@ public:
         while (d==1){
             a = compressFunc(a, n);
             b = compressFunc(compressFunc(b, n), n);
-//            std::cout << a << " " << b << std::endl;
             GCDHelder::eucBinary(abs(a - b), n, d);
             if (d > 1 && d < n){
                 return d;

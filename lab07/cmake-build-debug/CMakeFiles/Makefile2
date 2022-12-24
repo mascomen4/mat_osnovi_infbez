@@ -63,9 +63,8 @@ CMAKE_BINARY_DIR = /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cm
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/lab07.dir/all
 all: CMakeFiles/main.dir/all
-all: CMakeFiles/primeNumsLib.dir/all
+all: CMakeFiles/lab07.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,36 +72,9 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/lab07.dir/clean
 clean: CMakeFiles/main.dir/clean
-clean: CMakeFiles/primeNumsLib.dir/clean
+clean: CMakeFiles/lab07.dir/clean
 .PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/lab07.dir
-
-# All Build rule for target.
-CMakeFiles/lab07.dir/all: CMakeFiles/primeNumsLib.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab07.dir/build.make CMakeFiles/lab07.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab07.dir/build.make CMakeFiles/lab07.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target lab07"
-.PHONY : CMakeFiles/lab07.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/lab07.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lab07.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/lab07.dir/rule
-
-# Convenience name for target.
-lab07: CMakeFiles/lab07.dir/rule
-.PHONY : lab07
-
-# clean rule for target.
-CMakeFiles/lab07.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab07.dir/build.make CMakeFiles/lab07.dir/clean
-.PHONY : CMakeFiles/lab07.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/main.dir
@@ -131,30 +103,30 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/primeNumsLib.dir
+# Target rules for target CMakeFiles/lab07.dir
 
 # All Build rule for target.
-CMakeFiles/primeNumsLib.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primeNumsLib.dir/build.make CMakeFiles/primeNumsLib.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primeNumsLib.dir/build.make CMakeFiles/primeNumsLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target primeNumsLib"
-.PHONY : CMakeFiles/primeNumsLib.dir/all
+CMakeFiles/lab07.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab07.dir/build.make CMakeFiles/lab07.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab07.dir/build.make CMakeFiles/lab07.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target lab07"
+.PHONY : CMakeFiles/lab07.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/primeNumsLib.dir/rule: cmake_check_build_system
+CMakeFiles/lab07.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/primeNumsLib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lab07.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab07/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/primeNumsLib.dir/rule
+.PHONY : CMakeFiles/lab07.dir/rule
 
 # Convenience name for target.
-primeNumsLib: CMakeFiles/primeNumsLib.dir/rule
-.PHONY : primeNumsLib
+lab07: CMakeFiles/lab07.dir/rule
+.PHONY : lab07
 
 # clean rule for target.
-CMakeFiles/primeNumsLib.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primeNumsLib.dir/build.make CMakeFiles/primeNumsLib.dir/clean
-.PHONY : CMakeFiles/primeNumsLib.dir/clean
+CMakeFiles/lab07.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab07.dir/build.make CMakeFiles/lab07.dir/clean
+.PHONY : CMakeFiles/lab07.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

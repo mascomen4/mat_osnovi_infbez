@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab07
-
-# Build rule for target.
-lab07: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab07
-.PHONY : lab07
-
-# fast build rule for target.
-lab07/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab07.dir/build.make CMakeFiles/lab07.dir/build
-.PHONY : lab07/fast
-
-#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -143,41 +130,17 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named primeNumsLib
+# Target rules for targets named lab07
 
 # Build rule for target.
-primeNumsLib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 primeNumsLib
-.PHONY : primeNumsLib
+lab07: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab07
+.PHONY : lab07
 
 # fast build rule for target.
-primeNumsLib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primeNumsLib.dir/build.make CMakeFiles/primeNumsLib.dir/build
-.PHONY : primeNumsLib/fast
-
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.o: home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.o
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.o
-
-# target to build an object file
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primeNumsLib.dir/build.make CMakeFiles/primeNumsLib.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.o
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.o
-
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.i: home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.i
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.i
-
-# target to preprocess a source file
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primeNumsLib.dir/build.make CMakeFiles/primeNumsLib.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.i
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.i
-
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.s: home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.s
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.s
-
-# target to generate assembly for a file
-home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primeNumsLib.dir/build.make CMakeFiles/primeNumsLib.dir/home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.s
-.PHONY : home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.cpp.s
+lab07/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab07.dir/build.make CMakeFiles/lab07.dir/build
+.PHONY : lab07/fast
 
 src/DicreteLogarithmHelper.o: src/DicreteLogarithmHelper.cpp.o
 .PHONY : src/DicreteLogarithmHelper.o
@@ -237,10 +200,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... lab07"
 	@echo "... main"
-	@echo "... primeNumsLib"
-	@echo "... home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.o"
-	@echo "... home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.i"
-	@echo "... home/pi/education/pfur_masters/matOsnovyInfBez/labs/lab05/src/PrimeNumbersHelper.s"
 	@echo "... src/DicreteLogarithmHelper.o"
 	@echo "... src/DicreteLogarithmHelper.i"
 	@echo "... src/DicreteLogarithmHelper.s"
